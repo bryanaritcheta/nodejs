@@ -1,16 +1,22 @@
+require('dotenv').config()
+console.log(process.env) // remove this after you've confirmed it working
+
 var nodemailer = require('nodemailer');
 
 var transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "premium166.web-hosting.com",
+    port: 465,
+    secure: true,
     auth: {
-        user: 'youremail@gmail.com',
-        pass: 'yourpassword'
-    }
+        user: process.env.email,
+        pass: process.env.password
+    },
+    logger: true
 });
 
 var mailOptions = {
-    from: 'youremail@gmail.com',
-    to: 'myfriend@yahoo.com',
+    from: process.env.email,
+    to: 'bryanaritcheta@yahoo.com',
     subject: 'Sending Email using Node.js',
     text: 'That was easy!'
 };
